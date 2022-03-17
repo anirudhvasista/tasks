@@ -1,0 +1,14 @@
+---
+- name: Check Disk Space Usage
+  hosts: 192.168.122.67
+  tasks:
+    - name: cpu,memory utilisation usage from command module
+      command: '{{item}}'
+      loop: 
+        - free -m
+        - cat /proc/meminfo
+
+      register: space
+    - debug:
+        var: space
+ 
