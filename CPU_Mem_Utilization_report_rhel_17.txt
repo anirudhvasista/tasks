@@ -1,0 +1,141 @@
+
+PLAY [Check Disk Space Usage] **************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [192.168.122.67]
+
+TASK [cpu,memory utilisation usage from command module] ************************
+changed: [192.168.122.67] => (item=free -m)
+changed: [192.168.122.67] => (item=cat /proc/meminfo)
+
+TASK [debug] *******************************************************************
+ok: [192.168.122.67] => {
+    "space": {
+        "changed": true,
+        "msg": "All items completed",
+        "results": [
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": [
+                    "free",
+                    "-m"
+                ],
+                "delta": "0:00:00.004112",
+                "end": "2022-03-17 12:17:58.826426",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "free -m",
+                        "_uses_shell": false,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": true
+                    }
+                },
+                "item": "free -m",
+                "rc": 0,
+                "start": "2022-03-17 12:17:58.822314",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "              total        used        free      shared  buff/cache   available\nMem:           1837         155        1508           8         173        1534\nSwap:          2047           0        2047",
+                "stdout_lines": [
+                    "              total        used        free      shared  buff/cache   available",
+                    "Mem:           1837         155        1508           8         173        1534",
+                    "Swap:          2047           0        2047"
+                ]
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "cmd": [
+                    "cat",
+                    "/proc/meminfo"
+                ],
+                "delta": "0:00:00.002880",
+                "end": "2022-03-17 12:17:59.052433",
+                "failed": false,
+                "invocation": {
+                    "module_args": {
+                        "_raw_params": "cat /proc/meminfo",
+                        "_uses_shell": false,
+                        "argv": null,
+                        "chdir": null,
+                        "creates": null,
+                        "executable": null,
+                        "removes": null,
+                        "stdin": null,
+                        "stdin_add_newline": true,
+                        "strip_empty_ends": true,
+                        "warn": true
+                    }
+                },
+                "item": "cat /proc/meminfo",
+                "rc": 0,
+                "start": "2022-03-17 12:17:59.049553",
+                "stderr": "",
+                "stderr_lines": [],
+                "stdout": "MemTotal:        1881808 kB\nMemFree:         1544832 kB\nMemAvailable:    1571340 kB\nBuffers:            2108 kB\nCached:           152700 kB\nSwapCached:            0 kB\nActive:           125192 kB\nInactive:         102392 kB\nActive(anon):      72920 kB\nInactive(anon):     8516 kB\nActive(file):      52272 kB\nInactive(file):    93876 kB\nUnevictable:           0 kB\nMlocked:               0 kB\nSwapTotal:       2097148 kB\nSwapFree:        2097148 kB\nDirty:               152 kB\nWriteback:             0 kB\nAnonPages:         72620 kB\nMapped:            23044 kB\nShmem:              8824 kB\nSlab:              50516 kB\nSReclaimable:      23044 kB\nSUnreclaim:        27472 kB\nKernelStack:        1984 kB\nPageTables:         4260 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:     3038052 kB\nCommitted_AS:     293736 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:      405356 kB\nVmallocChunk:   34358947836 kB\nPercpu:              520 kB\nHardwareCorrupted:     0 kB\nAnonHugePages:      8192 kB\nCmaTotal:              0 kB\nCmaFree:               0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nDirectMap4k:       71532 kB\nDirectMap2M:     2025472 kB\nDirectMap1G:           0 kB",
+                "stdout_lines": [
+                    "MemTotal:        1881808 kB",
+                    "MemFree:         1544832 kB",
+                    "MemAvailable:    1571340 kB",
+                    "Buffers:            2108 kB",
+                    "Cached:           152700 kB",
+                    "SwapCached:            0 kB",
+                    "Active:           125192 kB",
+                    "Inactive:         102392 kB",
+                    "Active(anon):      72920 kB",
+                    "Inactive(anon):     8516 kB",
+                    "Active(file):      52272 kB",
+                    "Inactive(file):    93876 kB",
+                    "Unevictable:           0 kB",
+                    "Mlocked:               0 kB",
+                    "SwapTotal:       2097148 kB",
+                    "SwapFree:        2097148 kB",
+                    "Dirty:               152 kB",
+                    "Writeback:             0 kB",
+                    "AnonPages:         72620 kB",
+                    "Mapped:            23044 kB",
+                    "Shmem:              8824 kB",
+                    "Slab:              50516 kB",
+                    "SReclaimable:      23044 kB",
+                    "SUnreclaim:        27472 kB",
+                    "KernelStack:        1984 kB",
+                    "PageTables:         4260 kB",
+                    "NFS_Unstable:          0 kB",
+                    "Bounce:                0 kB",
+                    "WritebackTmp:          0 kB",
+                    "CommitLimit:     3038052 kB",
+                    "Committed_AS:     293736 kB",
+                    "VmallocTotal:   34359738367 kB",
+                    "VmallocUsed:      405356 kB",
+                    "VmallocChunk:   34358947836 kB",
+                    "Percpu:              520 kB",
+                    "HardwareCorrupted:     0 kB",
+                    "AnonHugePages:      8192 kB",
+                    "CmaTotal:              0 kB",
+                    "CmaFree:               0 kB",
+                    "HugePages_Total:       0",
+                    "HugePages_Free:        0",
+                    "HugePages_Rsvd:        0",
+                    "HugePages_Surp:        0",
+                    "Hugepagesize:       2048 kB",
+                    "DirectMap4k:       71532 kB",
+                    "DirectMap2M:     2025472 kB",
+                    "DirectMap1G:           0 kB"
+                ]
+            }
+        ]
+    }
+}
+
+PLAY RECAP *********************************************************************
+192.168.122.67             : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
